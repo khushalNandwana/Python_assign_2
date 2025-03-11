@@ -18,4 +18,4 @@ rect=Rectangle(15,20)
 print(f"Area of rectangle is={rect.area()}")
 
 cricle=Cricle(5)
-print(f"Area of cricle is={cricle.area():2f}")
+print(f"Area of cricle is={cricle.area():2}")
