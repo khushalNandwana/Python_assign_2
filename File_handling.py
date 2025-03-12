@@ -1,24 +1,33 @@
-import pickle
-record=[]
 def write():
-    file=open(r'C:\Users\khush\Documents\kevon projects\Python_assign_2\student.txt','w')
+    file= open(r"C:\Users\khush\Documents\kevon projects\Python_assign_2\file_handling\students.txt", "w")
     while True:
-        name=input("Enter the name:")
-        roll_no= int(input("Enter the roll No:"))
-        marks=float(input("Enter the marks:"))
-        data=[name,roll_no,marks]
-        record.append(data)#Nested List
-        ch=input("Y->Yes\nN->No\nEnter your choice")
-        if ch=='n' or ch=='N':
-            break
-    pickle.dump(record,file)
+            name = input("Enter student name: ")
+            if name.lower() == 'done':
+                break
+            try:
+                age = int(input("Enter student age: "))
+                marks = float(input("Enter student marks: "))
+            except ValueError:
+                print("Error = Please insert correct input")
+                continue
+            ch = input("Y->Yes\nN->No\nEnter your choice")
+            if ch == 'n' or ch == 'N':
+                break
+    file.write(f"Name: {name}, Age: {age}, Marks: {marks}\n")
+
+
 def read():
-    file=open(r'C:\Users\khush\Documents\kevon projects\Python_assign_2\student.txt','r')
-    s=pickle.load(file)
-    for i in s:
-        print(i)
-#main function
+    try:
+        file=open(r"C:\Users\khush\Documents\kevon projects\Python_assign_2\file_handling\students.txt", "r")
+        contents = file.read()
+        print("\nStudent Information")
+        print(contents)
+    except FileNotFoundError:
+        print("Error: students.txt not found.")
+
+
+# Main program execution
 write()
-print("Data written Successfully...")
+print("program run successfully")
 read()
-print("Program over..")
+print("program over here...")
