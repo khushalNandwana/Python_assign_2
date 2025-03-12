@@ -6,7 +6,7 @@ def write():
         name=input("Enter the name:")
         roll_no= int(input("Enter the roll No:"))
         marks=float(input("Enter the marks:"))
-        data=[name,str(roll_no),str(marks)]
+        data=[name,roll_no,marks]
         record.append(data)#Nested List
         ch=input("Y->Yes\nN->No\nEnter your choice")
         if ch=='n' or ch=='N':
