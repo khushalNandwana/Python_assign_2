@@ -1,6 +1,6 @@
 import os
 class ToDoList:
-    def __init__(self, filename):
+    def __init__(self, filename="tasks.txt"):
         self.filename = filename
         self.load_tasks()
 
@@ -14,7 +14,7 @@ class ToDoList:
     def save_tasks(self):
         with open(self.filename, "w") as file:
             for task in self.tasks:
-                file.write(f"{task}\n")
+                file.write(task + "\n")
 
     def add_task(self, task):
         self.tasks.append(task)
@@ -22,7 +22,7 @@ class ToDoList:
 
     def view_tasks(self):
         if not self.tasks:
-            print("No tasks in the list!")
+            print("No tasks available")
         else:
             for i, task in enumerate(self.tasks):
                 print(f"{i+1}. {task}")
@@ -33,7 +33,7 @@ class ToDoList:
             print("Task marked as completed!")
             self.save_tasks()
         else:
-            print("Invalid task index.")
+            print("Invalid task")
 
     def delete_task(self, index):
         if 0 < index <= len(self.tasks):
@@ -41,7 +41,7 @@ class ToDoList:
             print("Task deleted!")
             self.save_tasks()
         else:
-            print("Invalid task index.")
+            print("Invalid task")
 def main():
     todo_list = ToDoList()
 
@@ -62,11 +62,11 @@ def main():
             todo_list.view_tasks()
         elif choice == "3":
             todo_list.view_tasks()
-            num = int(input("Enter task number to mark as completed: "))
+            num = int(input("Enter task number: "))
             todo_list.mark_completed(num)
         elif choice == "4":
             todo_list.view_tasks()
-            num = int(input("Enter task number to delete: "))
+            num = int(input("Enter task number: "))
             todo_list.delete_task(num)
         elif choice == "5":
             print("program over")
